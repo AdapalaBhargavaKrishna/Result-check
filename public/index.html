@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CBIT Result Check</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background:#f4f6fb; display:flex; justify-content:center; padding:48px 16px; }
+    .card { background:#fff; padding:32px; border-radius:12px; box-shadow:0 4px 18px rgba(0,0,0,.08); width:100%; max-width:420px; }
+    h1 { margin:0 0 16px; font-size:22px; }
+    input, button { width:100%; padding:12px; font-size:16px; margin-top:10px; box-sizing:border-box; border-radius:8px; border:1px solid #ccd; }
+    button { background:#2b50d8; color:#fff; border:none; cursor:pointer; }
+    #out { margin-top:20px; line-height:1.7; }
+    .pass { color:#157f3b; font-weight:600; } .fail { color:#c0272d; font-weight:600; } .err { color:#c0272d; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Check Your Result</h1>
+    <input id="roll" placeholder="Enter 12-digit roll number" maxlength="12" />
+    <button onclick="check()">View Result</button>
+    <div id="out"></div>
+  </div>
+  <script>
+    async function check() {
+      const roll = document.getElementById("roll").value.trim();
+      const out = document.getElementById("out");
+      const res = await fetch("/api/result/" + encodeURIComponent(roll));
+      const data = await res.json();
+      if (!res.ok) { out.innerHTML = '<span class="err">' + data.error + '</span>'; return; }
+      out.innerHTML = `<b>${data.name}</b><br>Roll No: ${data.rollNo}<br>Branch: ${data.branch}<br>SGPA: ${data.sgpa}<br>` +
+        `Status: <span class="${data.status === "PASS" ? "pass" : "fail"}">${data.status}</span>`;
+    }
+  </script>
+</body>
+</html>

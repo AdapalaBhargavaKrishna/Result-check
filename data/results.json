@@ -1,0 +1,26 @@
+{
+  "160123737001": {
+    "name": "Bhargava Krishna",
+    "branch": "IT",
+    "sgpa": 8.9,
+    "status": "PASS"
+  },
+  "160123737002": {
+    "name": "Divya Reddy",
+    "branch": "IT",
+    "sgpa": 9.2,
+    "status": "PASS"
+  },
+  "160123737003": {
+    "name": "Rahul Varma",
+    "branch": "IT",
+    "sgpa": 5.1,
+    "status": "FAIL"
+  },
+  "160123737004": {
+    "name": "Sneha Rao",
+    "branch": "IT",
+    "sgpa": 8.4,
+    "status": "PASS"
+  }
+}
