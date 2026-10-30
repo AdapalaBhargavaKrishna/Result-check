@@ -15,7 +15,7 @@ describe("Unit tests - roll number validation and lookup", () => {
 
   test("returns the correct result for an existing student", () => {
     const r = getResult("160123737001");
-    expect(r.name).toBe("Wrong Name");
+    expect(r.name).toBe("Bhargava Krishna");
     expect(r.status).toBe("PASS");
   });
 
